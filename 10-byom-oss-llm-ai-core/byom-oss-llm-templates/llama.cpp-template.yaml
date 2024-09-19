@@ -52,7 +52,7 @@ spec:
     artifacts: 
       - name: customModel # Only used for hosting custom model or fine-tuning model in object store.
   template:
-    apiVersion: "serving.kserve.io/v2beta1"
+    apiVersion: "serving.kserve.io/v1beta1"
     metadata:
       annotations: |
         autoscaling.knative.dev/metric: concurrency

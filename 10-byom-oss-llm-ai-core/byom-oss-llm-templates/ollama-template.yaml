@@ -22,7 +22,7 @@ spec:
         default: "infer.s"
         description: "Resource Plan of SAP AI Core. Supported: infer.s, infer.m, infer.l, train.l"
   template:
-    apiVersion: "serving.kserve.io/v2beta1"
+    apiVersion: "serving.kserve.io/v1beta1"
     metadata:
       annotations: |
         autoscaling.knative.dev/metric: concurrency

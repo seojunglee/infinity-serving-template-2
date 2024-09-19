@@ -42,7 +42,7 @@ spec:
       default: "1"
       description: "The upper limit for the number of replicas to which the autoscaler can scale down."
   template:
-    apiVersion: "serving.kserve.io/v2beta1"
+    apiVersion: "serving.kserve.io/v1beta1"
     metadata:
       annotations: |
         autoscaling.knative.dev/metric: concurrency

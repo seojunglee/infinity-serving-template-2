@@ -1,4 +1,4 @@
-apiVersion: ai.sap.com/v1alpha1
+apiVersion: ai.sap.com/v2alpha1
 kind: ServingTemplate
 metadata:
   name: local-ai
@@ -30,7 +30,7 @@ spec:
         default: "infer.s"
         description: "Resource Plan of SAP AI Core. Supported: infer.s, infer.m, infer.l, train.l"
   template:
-    apiVersion: "serving.kserve.io/v1beta1"
+    apiVersion: "serving.kserve.io/v2beta1"
     metadata:
       annotations: |
         autoscaling.knative.dev/metric: concurrency
@@ -41,12 +41,12 @@ spec:
     spec: |
       predictor:
         imagePullSecrets:
-        - name: <YOUR_DOCKER_SECRET>
+        - name: docker-secret
         minReplicas: 1
         maxReplicas: 1
         containers:
         - name: kserve-container
-          image: docker.io/<YOUR_DOCKER_USER>/local-ai:ai-core
+          image: docker.io/seojungsierra/local-ai:ai-core
           ports:
             - containerPort: 18080
               protocol: TCP

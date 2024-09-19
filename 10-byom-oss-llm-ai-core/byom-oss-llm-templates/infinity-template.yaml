@@ -1,4 +1,4 @@
-apiVersion: ai.sap.com/v1alpha1
+apiVersion: ai.sap.com/v2alpha1
 kind: ServingTemplate
 metadata:
   name: infinity
@@ -15,16 +15,16 @@ spec:
     parameters:
     - name: image
       type: "string"
-      default: "docker.io/jacobtan89/infinity:ai-core"
+      default: "docker.io/seojungsierra/infinity-ko-sroberta-multitask:ai-core"
       description: "Define the location of the Docker image of which you have built for Infinity following the steps."
     - name: modelName
       type: "string"
-      default: "nreimers/MiniLM-L6-H384-uncased"
+      default: "jhgan/ko-sroberta-multitask" 
       description: "Define the Sentence Transformer model (MTEB) you would like to use that Infinity supports. More info: https://michaelfeil.eu/infinity/latest/"
     - name: urlPrefix
       type: "string"
-      default: "/v1"
-      description: "It is required for SAP AI Core to base the root of the inference server to start with /v1."
+      default: "/v2"
+      description: "It is required for SAP AI Core to base the root of the inference server to start with /v2."
     - name: portNumber
       type: "string"
       default: "7997"
@@ -42,7 +42,7 @@ spec:
       default: "1"
       description: "The upper limit for the number of replicas to which the autoscaler can scale down."
   template:
-    apiVersion: "serving.kserve.io/v1beta1"
+    apiVersion: "serving.kserve.io/v2beta1"
     metadata:
       annotations: |
         autoscaling.knative.dev/metric: concurrency
@@ -54,8 +54,8 @@ spec:
         ai.sap.com/resourcePlan: "{{inputs.parameters.resourcePlan}}"
     spec: |
       predictor:
-        imagePullSecrets:
-        - name: jacob-docker-secret
+        imagePullSecrets: 
+        - name: docker-secret
         minReplicas: {{inputs.parameters.minReplicas}}
         maxReplicas: {{inputs.parameters.maxReplicas}}
         containers:

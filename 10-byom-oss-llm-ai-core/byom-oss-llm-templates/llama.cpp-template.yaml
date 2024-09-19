@@ -1,4 +1,4 @@
-apiVersion: ai.sap.com/v2alpha1
+apiVersion: ai.sap.com/v1alpha1
 kind: ServingTemplate
 metadata:
   name: llama.cpp

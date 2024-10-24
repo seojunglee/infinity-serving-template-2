@@ -14,7 +14,7 @@ spec:
   inputs:
     parameters:
       - name: modelName # placeholder name
-        default: "phi3:14b" 
+        default: "phi3:mini" 
         type: string # required for every parameters
         description: "Model Name to be used for inference with SAP Generative AI Hub SDK"
       - name: resourcePlan
